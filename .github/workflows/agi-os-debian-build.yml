@@ -283,6 +283,10 @@ jobs:
       - name: Build atomspace package
         run: |
           cd atomspace
+          # Add override to skip dh_usrlocal (atomspace installs to /usr/local paths)
+          if ! grep -q "dh_usrlocal" debian/rules 2>/dev/null; then
+            echo -e '\noverride_dh_usrlocal:\n' >> debian/rules
+          fi
           dpkg-buildpackage -us -uc -b
       
       - name: List built packages

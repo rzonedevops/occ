@@ -267,6 +267,12 @@ jobs:
       run: |
         sudo dpkg -i ./deps/*.deb || echo "Some packages failed to install"
         sudo apt-get install -f -y
+        # Symlink Cython pxd files so atomspace-storage can find them
+        # (atomspace-storage CMakeLists hardcodes /usr/local/include/opencog/cython/)
+        if [ -d /usr/include/opencog/cython ]; then
+          sudo mkdir -p /usr/local/include/opencog
+          sudo ln -sf /usr/include/opencog/cython /usr/local/include/opencog/cython
+        fi
     
     - name: Prepare Debian packaging files
       run: |
