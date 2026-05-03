@@ -1,0 +1,4 @@
+usr/lib/*/lib*.so.*
+usr/lib/opencog
+usr/lib/python3
+usr/share

@@ -15,7 +15,7 @@
 
 
 %:
-	dh $@ --buildsystem-cmake --builddirectory=build
+	dh $@ --buildsystem=cmake --builddirectory=build
 
 override_dh_clean:
 	dh_clean
@@ -35,5 +35,5 @@ override_dh_strip:
 	dh_strip
 #	patchelf --set-rpath "/usr/lib/opencog:/usr/lib/python3/dist-packages/opencog" debian/opencog-atomspace/usr/lib/opencog/*.so
 #	patchelf --set-rpath "/usr/lib/opencog:/usr/lib/python3/dist-packages/opencog" debian/opencog-atomspace/usr/lib/python3/dist-packages/opencog/*.so
-	patchelf --remove-rpath $(CURDIR)/debian/opencog-atomspace/usr/lib/opencog/*.so
-	patchelf --remove-rpath $(CURDIR)/debian/opencog-atomspace/usr/lib/python3/dist-packages/opencog/*.so
+	patchelf --remove-rpath $(CURDIR)/debian/opencog-atomspace/usr/lib/opencog/*.so || true
+	patchelf --remove-rpath $(CURDIR)/debian/opencog-atomspace/usr/lib/python3/dist-packages/opencog/*.so || true
