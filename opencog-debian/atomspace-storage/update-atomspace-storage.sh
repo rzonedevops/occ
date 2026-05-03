@@ -5,9 +5,12 @@
 
 set -e
 
-PACKAGE_NAME="atomspace-storage"
+REPO_NAME=atomspace-storage
+DEB_NAME=atomspace-storage
+VERSION=1.0.0
+
+PACKAGE_NAME="${REPO_NAME}"
 UPSTREAM_REPO="../../${PACKAGE_NAME}"
-VERSION="1.0.0"
 
 echo "=========================================="
 echo "Updating ${PACKAGE_NAME} package"
